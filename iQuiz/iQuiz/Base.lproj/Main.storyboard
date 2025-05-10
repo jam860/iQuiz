@@ -87,7 +87,7 @@
                     <navigationItem key="navigationItem" id="Igk-xy-ads"/>
                     <connections>
                         <outlet property="tableView" destination="7ib-Yu-rVo" id="Eoa-nq-09m"/>
-                        <segue destination="XjZ-tx-mAc" kind="show" identifier="math" id="SQk-8M-a5F"/>
+                        <segue destination="XjZ-tx-mAc" kind="show" identifier="toQuestion" id="SQk-8M-a5F"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -97,28 +97,28 @@
         <!--Math Questions-->
         <scene sceneID="V2o-4h-g3e">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="XjZ-tx-mAc" customClass="MathQuestionController" customModule="iQuiz" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="XjZ-tx-mAc" customClass="QuestionController" customModule="iQuiz" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uUa-TH-eI6">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Math Questions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ff-qS-4u8">
-                                <rect key="frame" x="136.66666666666666" y="111" width="119.99999999999997" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Questions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ff-qS-4u8">
+                                <rect key="frame" x="158" y="111" width="77" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Math Question" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="57m-Gi-7l8">
-                                <rect key="frame" x="140.66666666666666" y="190" width="112" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Question" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="57m-Gi-7l8">
+                                <rect key="frame" x="162" y="190" width="69" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="5mn-lL-B4C">
-                                <rect key="frame" x="0.0" y="288" width="393" height="347"/>
+                                <rect key="frame" x="0.0" y="288" width="393" height="313"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="mathCell" id="7pB-mB-Ifx">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="answerCell" id="7pB-mB-Ifx">
                                         <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7pB-mB-Ifx" id="dxd-HK-gYO">
@@ -166,7 +166,7 @@
                         <outlet property="mathQuestion" destination="57m-Gi-7l8" id="hr8-fY-srV"/>
                         <outlet property="mathTableView" destination="5mn-lL-B4C" id="o7h-15-uWs"/>
                         <outlet property="submitButton" destination="8ka-q9-yMw" id="KTl-bj-yl3"/>
-                        <segue destination="NIp-QC-feq" kind="show" identifier="mathAnswer" id="LyX-D4-abK"/>
+                        <segue destination="NIp-QC-feq" kind="show" identifier="toAnswer" id="LyX-D4-abK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7rc-hJ-OJ6" sceneMemberID="firstResponder"/>
@@ -177,7 +177,7 @@
         <!--Math Questions-->
         <scene sceneID="STs-Ag-tsf">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="NIp-QC-feq" customClass="MathAnswerController" customModule="iQuiz" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="NIp-QC-feq" customClass="AnswerController" customModule="iQuiz" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IGz-fl-M5R">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -197,7 +197,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Question Result" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="837-qi-02E">
-                                <rect key="frame" x="136.33333333333334" y="550.66666666666663" width="120.33333333333334" height="20.333333333333371"/>
+                                <rect key="frame" x="136.33333333333334" y="516.66666666666663" width="120.33333333333334" height="20.333333333333371"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -215,7 +215,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JVR-0V-c6F">
-                                <rect key="frame" x="166.66666666666666" y="723" width="60" height="35"/>
+                                <rect key="frame" x="166.66666666666666" y="689" width="60" height="35"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Next"/>
                                 <connections>
@@ -245,7 +245,7 @@
                         <outlet property="correctAnswerLabel" destination="tiv-oW-ERr" id="V70-Dq-s1A"/>
                         <outlet property="questionLabel" destination="267-ZA-62m" id="2wt-Mm-D6A"/>
                         <outlet property="resultLabel" destination="837-qi-02E" id="gQS-wn-k97"/>
-                        <segue destination="XjZ-tx-mAc" kind="show" identifier="backToMath" id="eWT-ae-Eho"/>
+                        <segue destination="KPz-cF-P3D" kind="show" identifier="toResults" id="ywm-Qg-bpX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JjN-vT-nBM" sceneMemberID="firstResponder"/>
@@ -253,10 +253,73 @@
             </objects>
             <point key="canvasLocation" x="-773.28244274809163" y="1440.1408450704225"/>
         </scene>
+        <!--Math Questions-->
+        <scene sceneID="Ygu-nC-GmK">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" id="KPz-cF-P3D" customClass="ResultsController" customModule="iQuiz" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="l0i-Wm-JYj">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Results" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LRa-VZ-USX">
+                                <rect key="frame" x="168.66666666666666" y="111" width="56" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Score Results" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cbr-Kb-eJo">
+                                <rect key="frame" x="120" y="538" width="153" height="31.333333333333343"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Performance" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ph1-7W-oc5">
+                                <rect key="frame" x="23" y="355" width="337" height="55"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g2f-Rr-U9p">
+                                <rect key="frame" x="162" y="642" width="60" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Next"/>
+                                <connections>
+                                    <segue destination="nHP-dd-kQI" kind="unwind" unwindAction="unwindToMainWithSegue:" id="072-5E-9HB"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fpK-xx-m6c">
+                                <rect key="frame" x="23" y="97" width="62" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Back"/>
+                                <connections>
+                                    <segue destination="nHP-dd-kQI" kind="unwind" unwindAction="unwindToMainWithSegue:" id="sl4-Vd-eaB"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="V23-r4-Vzi"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="cbr-Kb-eJo" firstAttribute="top" secondItem="LRa-VZ-USX" secondAttribute="bottom" constant="68" id="9Nt-V8-s7N"/>
+                            <constraint firstItem="LRa-VZ-USX" firstAttribute="top" secondItem="l0i-Wm-JYj" secondAttribute="top" constant="111" id="FfQ-hf-daf"/>
+                            <constraint firstItem="LRa-VZ-USX" firstAttribute="centerX" secondItem="l0i-Wm-JYj" secondAttribute="centerX" id="RXX-fd-6qL"/>
+                            <constraint firstItem="cbr-Kb-eJo" firstAttribute="centerX" secondItem="l0i-Wm-JYj" secondAttribute="centerX" id="jsI-gH-Kzh"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Math Questions" id="HML-1q-Do0"/>
+                    <connections>
+                        <outlet property="performanceLabel" destination="ph1-7W-oc5" id="ySY-lK-VgU"/>
+                        <outlet property="scoreResultsLabel" destination="cbr-Kb-eJo" id="Afe-Vg-Ljt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pPN-2A-7iN" sceneMemberID="firstResponder"/>
+                <exit id="nHP-dd-kQI" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="-773.28244274809163" y="2180.9859154929577"/>
+        </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="eWT-ae-Eho"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <image name="gear" catalog="system" width="128" height="122"/>
         <systemColor name="systemBackgroundColor">

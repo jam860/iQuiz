@@ -34,18 +34,14 @@ class MainController: UIViewController {
     ]
     
     @IBAction func settingsTap(_ sender: Any) {
-        print("yay works")
         let alert = UIAlertController(title: "Settings", message: "Settings goes here", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        self.present(alert, animated: true, completion: {
-            print("it's been completed")
-        })
+        self.present(alert, animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        print("loaded main screen")
         tableView.delegate = self
         tableView.dataSource = self
     }
@@ -71,22 +67,18 @@ extension UIImage {
 extension MainController : UITableViewDataSource, UITableViewDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "math" {
-            if let destination = segue.destination as? MathQuestionController,
+        if segue.identifier == "toQuestion" {
+            if let destination = segue.destination as? QuestionController,
                 let topic = sender as? Topic {
                     destination.topic = topic
                 }
             }
-        print("prepared")
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let cell = tableView.cellForRow(at: indexPath) {
-            let labelText = cell.textLabel?.text ?? "No text"
-            print("Tapped \(labelText)")
-            if labelText == "Mathematics" {
-                performSegue(withIdentifier: "math", sender: topics[indexPath.row])
-            }
+//            let labelText = cell.textLabel?.text ?? "No text"
+            performSegue(withIdentifier: "toQuestion", sender: topics[indexPath.row])
         }
         tableView.deselectRow(at: indexPath, animated: true)
     }

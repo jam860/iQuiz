@@ -7,12 +7,13 @@
 
 import UIKit
 
-class MathQuestionController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class QuestionController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var mathQuestion: UILabel!
     var topic : Topic?
     var currQuestion : Int = 0;
     var selectedAnswer : String = "";
+    var answersCorrect : Int = 0;
     @IBOutlet weak var mathTableView: UITableView!
     @IBOutlet weak var submitButton: UIButton!
     
@@ -26,7 +27,6 @@ class MathQuestionController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        print(currQuestion)
         mathTableView.reloadData();
         mathQuestion.text = topic?.questions[currQuestion].text;
         submitButton.isEnabled = false;
@@ -46,20 +46,22 @@ class MathQuestionController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "mathCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "answerCell", for: indexPath)
         cell.textLabel?.text = topic?.questions[currQuestion].answers[indexPath.row]
         return cell;
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "mathAnswer" {
-            if let destination = segue.destination as? MathAnswerController {
-                if let sender = sender as? (answerResult : Bool, correctAnswer : String, selectedAnswer : String, question : String, topicFinished : Bool) {
+        if segue.identifier == "toAnswer" {
+            if let destination = segue.destination as? AnswerController {
+                if let sender = sender as? (answerResult : Bool, correctAnswer : String, selectedAnswer : String, question : String, topicFinished : Bool, totalQuestions : Int, answersCorrect : Int) {
                     destination.answerResult = sender.answerResult;
                     destination.correctAnswer = sender.correctAnswer;
                     destination.selectedAnswer = sender.selectedAnswer
                     destination.question = sender.question
                     destination.topicFinished = sender.topicFinished
+                    destination.totalQuestions = sender.totalQuestions
+                    destination.answersCorrect = sender.answersCorrect
                 }
             }
         }
@@ -70,7 +72,10 @@ class MathQuestionController: UIViewController, UITableViewDataSource, UITableVi
     @IBAction func submitBtn(_ sender: Any?) {
         let answerIndex = (topic?.questions[currQuestion].answerIndex ?? 1) - 1
         let answer : String = topic?.questions[currQuestion].answers[answerIndex] ?? ""
-        performSegue(withIdentifier: "mathAnswer", sender: (answerResult: selectedAnswer == answer, correctAnswer: answer, selectedAnswer: selectedAnswer, question: topic?.questions[currQuestion].text, topicFinished: currQuestion + 1 >= topic?.questions.count ?? 1))
+        if selectedAnswer == answer {
+            answersCorrect += 1;
+        }
+        performSegue(withIdentifier: "toAnswer", sender: (answerResult: selectedAnswer == answer, correctAnswer: answer, selectedAnswer: selectedAnswer, question: topic?.questions[currQuestion].text, topicFinished: currQuestion + 1 >= topic?.questions.count ?? 1, totalQuestions: topic?.questions.count, answersCorrect: answersCorrect))
         currQuestion += 1
     }
     
