@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="4BX-TJ-OFO">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
@@ -8,10 +8,25 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Navigation Controller-->
+        <scene sceneID="zfK-5G-AGC">
+            <objects>
+                <navigationController navigationBarHidden="YES" id="4BX-TJ-OFO" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="RW5-X0-q46">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="1TC-Xd-A6E"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FPo-Mh-C6y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="74" y="-730"/>
+        </scene>
+        <!--Main Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="iQuiz" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="MainController" customModule="iQuiz" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -69,15 +84,179 @@
                             <constraint firstItem="7ib-Yu-rVo" firstAttribute="top" secondItem="zp2-7b-vNY" secondAttribute="bottom" id="wbo-tx-Eql"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="Igk-xy-ads"/>
                     <connections>
                         <outlet property="tableView" destination="7ib-Yu-rVo" id="Eoa-nq-09m"/>
+                        <segue destination="XjZ-tx-mAc" kind="show" identifier="math" id="SQk-8M-a5F"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="75" y="-2"/>
         </scene>
+        <!--Math Questions-->
+        <scene sceneID="V2o-4h-g3e">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" id="XjZ-tx-mAc" customClass="MathQuestionController" customModule="iQuiz" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="uUa-TH-eI6">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Math Questions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ff-qS-4u8">
+                                <rect key="frame" x="136.66666666666666" y="111" width="119.99999999999997" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Math Question" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="57m-Gi-7l8">
+                                <rect key="frame" x="140.66666666666666" y="190" width="112" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="5mn-lL-B4C">
+                                <rect key="frame" x="0.0" y="288" width="393" height="347"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="mathCell" id="7pB-mB-Ifx">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7pB-mB-Ifx" id="dxd-HK-gYO">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bMR-ug-2Yn">
+                                <rect key="frame" x="23.666666666666671" y="111" width="62" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Back"/>
+                                <connections>
+                                    <segue destination="lHj-Ft-JKT" kind="unwind" unwindAction="unwindToMainWithSegue:" id="o7x-tt-KsP"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8ka-q9-yMw">
+                                <rect key="frame" x="158" y="685" width="78" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Submit"/>
+                                <connections>
+                                    <action selector="submitBtn:" destination="XjZ-tx-mAc" eventType="touchUpInside" id="TQC-Z4-2Ue"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="h2b-ip-bbe"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="bMR-ug-2Yn" firstAttribute="leading" secondItem="h2b-ip-bbe" secondAttribute="leading" constant="23.670000000000002" id="9hK-sh-h0O"/>
+                            <constraint firstItem="57m-Gi-7l8" firstAttribute="top" secondItem="3Ff-qS-4u8" secondAttribute="bottom" constant="58" id="AkN-5p-Ucw"/>
+                            <constraint firstItem="h2b-ip-bbe" firstAttribute="bottom" secondItem="5mn-lL-B4C" secondAttribute="bottom" constant="183" id="Jzg-jr-10d"/>
+                            <constraint firstItem="3Ff-qS-4u8" firstAttribute="top" secondItem="uUa-TH-eI6" secondAttribute="top" constant="111" id="PBd-EO-q5z"/>
+                            <constraint firstItem="57m-Gi-7l8" firstAttribute="centerX" secondItem="uUa-TH-eI6" secondAttribute="centerX" id="Wtb-9M-ZQc"/>
+                            <constraint firstItem="bMR-ug-2Yn" firstAttribute="top" secondItem="uUa-TH-eI6" secondAttribute="top" constant="111" id="YVy-Vp-bPC"/>
+                            <constraint firstItem="5mn-lL-B4C" firstAttribute="leading" secondItem="h2b-ip-bbe" secondAttribute="leading" id="eKS-Z4-ayV"/>
+                            <constraint firstItem="3Ff-qS-4u8" firstAttribute="centerX" secondItem="uUa-TH-eI6" secondAttribute="centerX" id="i6W-2d-9mS"/>
+                            <constraint firstItem="5mn-lL-B4C" firstAttribute="trailing" secondItem="h2b-ip-bbe" secondAttribute="trailing" id="jhE-yf-zUV"/>
+                            <constraint firstItem="5mn-lL-B4C" firstAttribute="top" secondItem="57m-Gi-7l8" secondAttribute="bottom" constant="77" id="yiT-nc-Pwk"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Math Questions" id="KHO-7x-C6w"/>
+                    <connections>
+                        <outlet property="mathQuestion" destination="57m-Gi-7l8" id="hr8-fY-srV"/>
+                        <outlet property="mathTableView" destination="5mn-lL-B4C" id="o7h-15-uWs"/>
+                        <outlet property="submitButton" destination="8ka-q9-yMw" id="KTl-bj-yl3"/>
+                        <segue destination="NIp-QC-feq" kind="show" identifier="mathAnswer" id="LyX-D4-abK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7rc-hJ-OJ6" sceneMemberID="firstResponder"/>
+                <exit id="lHj-Ft-JKT" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="-773.28244274809163" y="729.57746478873241"/>
+        </scene>
+        <!--Math Questions-->
+        <scene sceneID="STs-Ag-tsf">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" id="NIp-QC-feq" customClass="MathAnswerController" customModule="iQuiz" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="IGz-fl-M5R">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Question Result" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HrO-Gk-Jfa">
+                                <rect key="frame" x="136" y="111" width="121" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qqt-Qo-w6y">
+                                <rect key="frame" x="23.666666666666671" y="111" width="62" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Back"/>
+                                <connections>
+                                    <segue destination="5FE-aA-BSY" kind="unwind" unwindAction="unwindToMainWithSegue:" id="qQP-tc-HnE"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Question Result" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="837-qi-02E">
+                                <rect key="frame" x="136.33333333333334" y="550.66666666666663" width="120.33333333333334" height="20.333333333333371"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Question" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="267-ZA-62m">
+                                <rect key="frame" x="145.66666666666666" y="200" width="101.66666666666666" height="31.333333333333343"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Correct Answer" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tiv-oW-ERr">
+                                <rect key="frame" x="116.33333333333333" y="327" width="160.66666666666669" height="28.666666666666686"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JVR-0V-c6F">
+                                <rect key="frame" x="166.66666666666666" y="723" width="60" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Next"/>
+                                <connections>
+                                    <action selector="nextBtn:" destination="NIp-QC-feq" eventType="touchUpInside" id="7qh-ws-IWU"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vUt-IN-1dr"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="tiv-oW-ERr" firstAttribute="top" secondItem="267-ZA-62m" secondAttribute="bottom" constant="95.666666666666657" id="9ge-0x-KCt"/>
+                            <constraint firstItem="Qqt-Qo-w6y" firstAttribute="top" secondItem="IGz-fl-M5R" secondAttribute="top" constant="111" id="A1k-K4-o8e"/>
+                            <constraint firstItem="tiv-oW-ERr" firstAttribute="centerX" secondItem="IGz-fl-M5R" secondAttribute="centerX" id="N0h-PQ-ePP"/>
+                            <constraint firstItem="vUt-IN-1dr" firstAttribute="bottom" secondItem="JVR-0V-c6F" secondAttribute="bottom" constant="60" id="QHK-7Q-yG2"/>
+                            <constraint firstItem="HrO-Gk-Jfa" firstAttribute="top" secondItem="IGz-fl-M5R" secondAttribute="top" constant="111" id="Qy5-8L-yLv"/>
+                            <constraint firstItem="267-ZA-62m" firstAttribute="centerX" secondItem="IGz-fl-M5R" secondAttribute="centerX" id="W0a-cw-3tF"/>
+                            <constraint firstItem="vUt-IN-1dr" firstAttribute="bottom" secondItem="837-qi-02E" secondAttribute="bottom" constant="247" id="eta-An-Lux"/>
+                            <constraint firstItem="267-ZA-62m" firstAttribute="top" secondItem="HrO-Gk-Jfa" secondAttribute="bottom" constant="68" id="k7P-S3-j6P"/>
+                            <constraint firstItem="JVR-0V-c6F" firstAttribute="centerX" secondItem="IGz-fl-M5R" secondAttribute="centerX" id="lu8-nM-SFb"/>
+                            <constraint firstItem="837-qi-02E" firstAttribute="centerX" secondItem="IGz-fl-M5R" secondAttribute="centerX" id="q06-zD-sPb"/>
+                            <constraint firstItem="HrO-Gk-Jfa" firstAttribute="centerX" secondItem="IGz-fl-M5R" secondAttribute="centerX" id="qeT-w1-q3f"/>
+                            <constraint firstItem="Qqt-Qo-w6y" firstAttribute="leading" secondItem="vUt-IN-1dr" secondAttribute="leading" constant="23.670000000000002" id="znV-mb-Rjl"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Math Questions" id="LxC-rk-h0z"/>
+                    <connections>
+                        <outlet property="correctAnswerLabel" destination="tiv-oW-ERr" id="V70-Dq-s1A"/>
+                        <outlet property="questionLabel" destination="267-ZA-62m" id="2wt-Mm-D6A"/>
+                        <outlet property="resultLabel" destination="837-qi-02E" id="gQS-wn-k97"/>
+                        <segue destination="XjZ-tx-mAc" kind="show" identifier="backToMath" id="eWT-ae-Eho"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JjN-vT-nBM" sceneMemberID="firstResponder"/>
+                <exit id="5FE-aA-BSY" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="-773.28244274809163" y="1440.1408450704225"/>
+        </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="eWT-ae-Eho"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="gear" catalog="system" width="128" height="122"/>
         <systemColor name="systemBackgroundColor">

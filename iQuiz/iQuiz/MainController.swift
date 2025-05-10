@@ -12,18 +12,25 @@ struct Topic {
     let title : String
     let description : String
     let img : UIImage
+    let questions : [Question]
 }
 
-class ViewController: UIViewController {
+struct Question {
+    let text : String
+    let answerIndex : Int
+    let answers : [String]
+}
+
+class MainController: UIViewController {
     
 
     @IBOutlet var tableView: UITableView!
     @IBOutlet weak var setting: UIBarButtonItem!
     
     let topics : [Topic] = [
-        Topic(title: "Mathematics", description: "Math questions, ready to do calculus?", img: UIImage(named: "math")!),
-        Topic(title: "Marvel Super Heroes", description: "Your favorite superheroes!", img: UIImage(named: "venom")!),
-        Topic(title: "Science", description: "Science questions, volcano goes boom!", img: UIImage(named: "science")!)
+        Topic(title: "Mathematics", description: "Math questions, ready to do calculus?", img: UIImage(named: "math")!, questions: [Question(text: "What is 2+2?", answerIndex: 1, answers: ["4", "22", "An irrational number", "Nobody knows"]), Question(text: "What is 4+4?", answerIndex: 2, answers: ["42", "8", "kanji tatsumi", "ryuji sakamoto"])]),
+        Topic(title: "Marvel Super Heroes", description: "Your favorite superheroes!", img: UIImage(named: "venom")!, questions: [Question(text: "Who is Iron Man?", answerIndex: 1, answers: ["Tony Stark", "Obadiah Stane", "A rock hit by Megadeth", "Nobody knows"])]),
+        Topic(title: "Science", description: "Science questions, volcano goes boom!", img: UIImage(named: "science")!, questions: [Question(text: "What is fire?", answerIndex: 1, answers: ["One of the four classical elements", "A Magical reaction given to us by God", "A band that hasn't yet been discovered", "Fire! Fire! Fire! heh-heh"])])
     ]
     
     @IBAction func settingsTap(_ sender: Any) {
@@ -38,9 +45,13 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
+        print("loaded main screen")
         tableView.delegate = self
         tableView.dataSource = self
+    }
+    
+    @IBAction func unwindToMain(segue: UIStoryboardSegue) {
+        //unwinds
     }
 
 }
@@ -57,12 +68,25 @@ extension UIImage {
 }
 
 
-extension ViewController : UITableViewDataSource, UITableViewDelegate {
+extension MainController : UITableViewDataSource, UITableViewDelegate {
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "math" {
+            if let destination = segue.destination as? MathQuestionController,
+                let topic = sender as? Topic {
+                    destination.topic = topic
+                }
+            }
+        print("prepared")
+    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let cell = tableView.cellForRow(at: indexPath) {
             let labelText = cell.textLabel?.text ?? "No text"
             print("Tapped \(labelText)")
+            if labelText == "Mathematics" {
+                performSegue(withIdentifier: "math", sender: topics[indexPath.row])
+            }
         }
         tableView.deselectRow(at: indexPath, animated: true)
     }
