@@ -16,6 +16,9 @@ class ResultsController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(swipeLeft))
+        swipeLeft.direction = .left
+        self.view.addGestureRecognizer(swipeLeft)
         if answersCorrect == totalQuestions {
             performanceLabel.text = "Perfect! You got everything correct."
         } else if answersCorrect == 0 {
@@ -26,6 +29,10 @@ class ResultsController: UIViewController {
         scoreResultsLabel.text = "You got \(answersCorrect) out of \(totalQuestions) correct."
 
         // Do any additional setup after loading the view.
+    }
+    
+    @objc func swipeLeft() {
+        performSegue(withIdentifier: "unwindToMain", sender: self)
     }
     
 

@@ -20,11 +20,33 @@ class QuestionController: UIViewController, UITableViewDataSource, UITableViewDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(swipeLeft))
+        swipeLeft.direction = .left
+        self.view.addGestureRecognizer(swipeLeft)
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(swipeRight))
+        swipeRight.direction = .right
+        self.view.addGestureRecognizer(swipeRight)
         questionTableView.delegate = self;
         questionTableView.dataSource = self;
         questionTitleLabel.text = topic?.questions[currQuestion].text;
         topicTitleLabel.text = "\(topic?.title ?? "")"
         submitButton.isEnabled = false;
+    }
+    
+    @objc func swipeLeft() {
+        performSegue(withIdentifier: "unwindToMain", sender: self)
+    }
+    
+    @objc func swipeRight() {
+        if submitButton.isEnabled == true {
+            let answerIndex = (topic?.questions[currQuestion].answerIndex ?? 1) - 1
+            let answer : String = topic?.questions[currQuestion].answers[answerIndex] ?? ""
+            if selectedAnswer == answer {
+                answersCorrect += 1;
+            }
+            performSegue(withIdentifier: "toAnswer", sender: (answerResult: selectedAnswer == answer, correctAnswer: answer, selectedAnswer: selectedAnswer, question: topic?.questions[currQuestion].text, topicFinished: currQuestion + 1 >= topic?.questions.count ?? 1, totalQuestions: topic?.questions.count, answersCorrect: answersCorrect))
+            currQuestion += 1
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

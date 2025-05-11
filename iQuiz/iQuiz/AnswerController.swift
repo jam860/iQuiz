@@ -23,12 +23,31 @@ class AnswerController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        questionLabel.text = "\(question)"        
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(swipeLeft))
+        swipeLeft.direction = .left
+        self.view.addGestureRecognizer(swipeLeft)
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(swipeRight))
+        swipeRight.direction = .right
+        self.view.addGestureRecognizer(swipeRight)
+        questionLabel.text = "\(question)"
         correctAnswerLabel.text = "\(correctAnswer)"
         if answerResult == false {
             resultLabel.text = "Your answer was incorrect."
         } else if answerResult == true {
             resultLabel.text = "Your answer was correct."
+        }
+    }
+    
+    @objc func swipeLeft() {
+        performSegue(withIdentifier: "unwindToMain", sender: self)
+    }
+    
+    @objc func swipeRight() {
+        if topicFinished {
+            performSegue(withIdentifier: "toResults", sender: nil)
+        } else if !topicFinished {
+            //            performSegue(withIdentifier: "backToMath", sender: nil)
+            navigationController?.popViewController(animated: true)
         }
     }
     

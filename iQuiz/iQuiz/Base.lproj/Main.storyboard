@@ -32,7 +32,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="7ib-Yu-rVo">
-                                <rect key="frame" x="0.0" y="162" width="393" height="622"/>
+                                <rect key="frame" x="0.0" y="162" width="393" height="549"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" textLabel="5xo-bn-TeH" detailTextLabel="ArD-th-4DG" style="IBUITableViewCellStyleSubtitle" id="dOV-A4-UZn">
@@ -71,17 +71,27 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Swipe left to exit quiz at anytime / Swipe right to continue quiz " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M64-JO-zcm">
+                                <rect key="frame" x="10" y="732" width="373" height="63"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="7ib-Yu-rVo" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="16F-Gb-u9e"/>
                             <constraint firstItem="7ib-Yu-rVo" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="5Mp-Nj-H3N"/>
                             <constraint firstItem="7ib-Yu-rVo" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="EAP-67-zGi"/>
                             <constraint firstItem="zp2-7b-vNY" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="KJY-tS-72o"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="M64-JO-zcm" secondAttribute="bottom" constant="30" id="dWv-Kv-cnO"/>
+                            <constraint firstItem="M64-JO-zcm" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ec0-3l-ZBk"/>
+                            <constraint firstItem="M64-JO-zcm" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="10" id="qax-UG-ZR5"/>
+                            <constraint firstAttribute="trailing" secondItem="M64-JO-zcm" secondAttribute="trailing" constant="10" id="uiQ-vj-e5T"/>
                             <constraint firstItem="zp2-7b-vNY" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="vwQ-fl-Kme"/>
                             <constraint firstAttribute="trailing" secondItem="zp2-7b-vNY" secondAttribute="trailing" id="wRB-AG-cNR"/>
                             <constraint firstItem="7ib-Yu-rVo" firstAttribute="top" secondItem="zp2-7b-vNY" secondAttribute="bottom" id="wbo-tx-Eql"/>
+                            <constraint firstItem="M64-JO-zcm" firstAttribute="top" secondItem="7ib-Yu-rVo" secondAttribute="bottom" id="zeB-8N-but"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Igk-xy-ads"/>
@@ -92,7 +102,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="-2"/>
+            <point key="canvasLocation" x="74.045801526717554" y="-2.1126760563380285"/>
         </scene>
         <!--Math Questions-->
         <scene sceneID="V2o-4h-g3e">
@@ -109,13 +119,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Question" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="57m-Gi-7l8">
-                                <rect key="frame" x="128.66666666666666" y="206.66666666666666" width="135.99999999999997" height="38"/>
+                                <rect key="frame" x="128.66666666666666" y="206.66666666666666" width="135.99999999999997" height="38.333333333333343"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="5mn-lL-B4C">
-                                <rect key="frame" x="0.0" y="244.66666666666666" width="393" height="504.33333333333337"/>
+                                <rect key="frame" x="0.0" y="245.00000000000003" width="393" height="504.66666666666674"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="answerCell" id="7pB-mB-Ifx">
@@ -133,11 +143,11 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Back"/>
                                 <connections>
-                                    <segue destination="lHj-Ft-JKT" kind="unwind" unwindAction="unwindToMainWithSegue:" id="o7x-tt-KsP"/>
+                                    <segue destination="lHj-Ft-JKT" kind="unwind" identifier="unwindToMainBackBtn" unwindAction="unwindToMainWithSegue:" id="zEp-L0-ECo"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8ka-q9-yMw">
-                                <rect key="frame" x="157.66666666666666" y="749" width="78" height="35"/>
+                                <rect key="frame" x="157.66666666666666" y="749.66666666666663" width="78" height="34.333333333333371"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Submit"/>
                                 <connections>
@@ -169,6 +179,7 @@
                         <outlet property="submitButton" destination="8ka-q9-yMw" id="KTl-bj-yl3"/>
                         <outlet property="topicTitleLabel" destination="3Ff-qS-4u8" id="nMp-yg-r3J"/>
                         <segue destination="NIp-QC-feq" kind="show" identifier="toAnswer" id="LyX-D4-abK"/>
+                        <segue destination="lHj-Ft-JKT" kind="unwind" identifier="unwindToMain" unwindAction="unwindToMainWithSegue:" id="c7D-vd-RgM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7rc-hJ-OJ6" sceneMemberID="firstResponder"/>
@@ -191,25 +202,25 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Question Result" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="837-qi-02E">
-                                <rect key="frame" x="114.66666666666667" y="403.33333333333331" width="163.66666666666663" height="28.666666666666686"/>
+                                <rect key="frame" x="114.66666666666667" y="402" width="163.66666666666663" height="28.666666666666686"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Question" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="267-ZA-62m">
-                                <rect key="frame" x="141.33333333333334" y="235.66666666666666" width="110.33333333333334" height="31.333333333333343"/>
+                                <rect key="frame" x="141.33333333333334" y="235" width="110.33333333333334" height="31.333333333333314"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Correct Answer" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tiv-oW-ERr">
-                                <rect key="frame" x="109.00000000000001" y="334.66666666666669" width="175.33333333333337" height="28.666666666666686"/>
+                                <rect key="frame" x="109.00000000000001" y="333.33333333333331" width="175.33333333333337" height="28.666666666666686"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JVR-0V-c6F">
-                                <rect key="frame" x="166.66666666666666" y="749" width="59.666666666666657" height="35"/>
+                                <rect key="frame" x="166.66666666666666" y="749.66666666666663" width="59.666666666666657" height="34.333333333333371"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Next"/>
                                 <connections>
@@ -217,23 +228,23 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The question was: " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ima-WG-RPm">
-                                <rect key="frame" x="125" y="206.66666666666666" width="143" height="21"/>
+                                <rect key="frame" x="125.33333333333333" y="206.66666666666666" width="142.66666666666669" height="20.333333333333343"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The correct answer was:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MOm-CW-I0s">
-                                <rect key="frame" x="103" y="305.66666666666669" width="187" height="21"/>
+                                <rect key="frame" x="103.33333333333333" y="305" width="186.33333333333337" height="20.333333333333314"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Krd-A4-U92">
-                                <rect key="frame" x="29.999999999999996" y="148" width="61.666666666666657" height="34.333333333333343"/>
+                                <rect key="frame" x="23.999999999999996" y="148" width="61.666666666666657" height="34.333333333333343"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Back"/>
                                 <connections>
-                                    <segue destination="5FE-aA-BSY" kind="unwind" unwindAction="unwindToMainWithSegue:" id="gQZ-5J-jnU"/>
+                                    <segue destination="5FE-aA-BSY" kind="unwind" identifier="unwindToMainBackBtn" unwindAction="unwindToMainWithSegue:" id="gQZ-5J-jnU"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -249,7 +260,7 @@
                             <constraint firstItem="Krd-A4-U92" firstAttribute="top" secondItem="vUt-IN-1dr" secondAttribute="top" constant="30" id="MuL-5d-oBx"/>
                             <constraint firstItem="tiv-oW-ERr" firstAttribute="centerX" secondItem="IGz-fl-M5R" secondAttribute="centerX" id="N0h-PQ-ePP"/>
                             <constraint firstItem="HrO-Gk-Jfa" firstAttribute="top" secondItem="vUt-IN-1dr" secondAttribute="top" constant="30" id="PIl-cf-ImH"/>
-                            <constraint firstItem="Krd-A4-U92" firstAttribute="leading" secondItem="vUt-IN-1dr" secondAttribute="leading" constant="30" id="SbV-KA-xUr"/>
+                            <constraint firstItem="Krd-A4-U92" firstAttribute="leading" secondItem="vUt-IN-1dr" secondAttribute="leading" constant="24" id="SbV-KA-xUr"/>
                             <constraint firstItem="267-ZA-62m" firstAttribute="centerX" secondItem="IGz-fl-M5R" secondAttribute="centerX" id="W0a-cw-3tF"/>
                             <constraint firstItem="Ima-WG-RPm" firstAttribute="top" secondItem="HrO-Gk-Jfa" secondAttribute="bottom" constant="30" id="chU-28-W1b"/>
                             <constraint firstItem="JVR-0V-c6F" firstAttribute="centerX" secondItem="IGz-fl-M5R" secondAttribute="centerX" id="lu8-nM-SFb"/>
@@ -264,6 +275,7 @@
                         <outlet property="questionLabel" destination="267-ZA-62m" id="2wt-Mm-D6A"/>
                         <outlet property="resultLabel" destination="837-qi-02E" id="gQS-wn-k97"/>
                         <segue destination="KPz-cF-P3D" kind="show" identifier="toResults" id="ywm-Qg-bpX"/>
+                        <segue destination="5FE-aA-BSY" kind="unwind" identifier="unwindToMain" unwindAction="unwindToMainWithSegue:" id="G9V-X1-iCG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JjN-vT-nBM" sceneMemberID="firstResponder"/>
@@ -292,12 +304,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g2f-Rr-U9p">
-                                <rect key="frame" x="166.66666666666666" y="749" width="59.666666666666657" height="35"/>
+                                <rect key="frame" x="166.66666666666666" y="749.66666666666663" width="59.666666666666657" height="34.333333333333371"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Next"/>
-                                <connections>
-                                    <segue destination="nHP-dd-kQI" kind="unwind" unwindAction="unwindToMainWithSegue:" id="072-5E-9HB"/>
-                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score Results" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cbr-Kb-eJo">
                                 <rect key="frame" x="120" y="342.33333333333331" width="153" height="31.333333333333314"/>
@@ -306,11 +315,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fpK-xx-m6c">
-                                <rect key="frame" x="26" y="148" width="65.666666666666671" height="34.333333333333343"/>
+                                <rect key="frame" x="23.999999999999996" y="148" width="61.666666666666657" height="34.333333333333343"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Back"/>
                                 <connections>
-                                    <segue destination="nHP-dd-kQI" kind="unwind" unwindAction="unwindToMainWithSegue:" id="sl4-Vd-eaB"/>
+                                    <segue destination="nHP-dd-kQI" kind="unwind" identifier="unwindToMain" unwindAction="unwindToMainWithSegue:" id="HKU-S9-OvI"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -326,8 +335,7 @@
                             <constraint firstItem="g2f-Rr-U9p" firstAttribute="centerX" secondItem="l0i-Wm-JYj" secondAttribute="centerX" id="a08-zi-I8K"/>
                             <constraint firstItem="ph1-7W-oc5" firstAttribute="top" secondItem="LRa-VZ-USX" secondAttribute="bottom" constant="70" id="hTT-ei-PBz"/>
                             <constraint firstItem="cbr-Kb-eJo" firstAttribute="centerX" secondItem="l0i-Wm-JYj" secondAttribute="centerX" id="jsI-gH-Kzh"/>
-                            <constraint firstItem="LRa-VZ-USX" firstAttribute="leading" secondItem="fpK-xx-m6c" secondAttribute="trailing" constant="66.670000000000002" id="kbW-0z-DrG"/>
-                            <constraint firstItem="fpK-xx-m6c" firstAttribute="leading" secondItem="V23-r4-Vzi" secondAttribute="leading" constant="26" id="y7d-Ig-Bqo"/>
+                            <constraint firstItem="fpK-xx-m6c" firstAttribute="leading" secondItem="V23-r4-Vzi" secondAttribute="leading" constant="24" id="y7d-Ig-Bqo"/>
                             <constraint firstItem="ph1-7W-oc5" firstAttribute="centerX" secondItem="l0i-Wm-JYj" secondAttribute="centerX" id="z6V-T1-DoO"/>
                         </constraints>
                     </view>
@@ -335,6 +343,7 @@
                     <connections>
                         <outlet property="performanceLabel" destination="ph1-7W-oc5" id="ySY-lK-VgU"/>
                         <outlet property="scoreResultsLabel" destination="cbr-Kb-eJo" id="Afe-Vg-Ljt"/>
+                        <segue destination="nHP-dd-kQI" kind="unwind" identifier="unwindToMain" unwindAction="unwindToMainWithSegue:" id="q0G-Cs-Qbd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pPN-2A-7iN" sceneMemberID="firstResponder"/>
