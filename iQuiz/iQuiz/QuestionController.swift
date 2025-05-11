@@ -9,26 +9,27 @@ import UIKit
 
 class QuestionController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    @IBOutlet weak var mathQuestion: UILabel!
     var topic : Topic?
     var currQuestion : Int = 0;
     var selectedAnswer : String = "";
     var answersCorrect : Int = 0;
-    @IBOutlet weak var mathTableView: UITableView!
+    @IBOutlet weak var topicTitleLabel: UILabel!
+    @IBOutlet weak var questionTitleLabel: UILabel!
+    @IBOutlet weak var questionTableView: UITableView!
     @IBOutlet weak var submitButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(topic ?? "");
-        mathTableView.delegate = self;
-        mathTableView.dataSource = self;
-        mathQuestion.text = topic?.questions[currQuestion].text;
+        questionTableView.delegate = self;
+        questionTableView.dataSource = self;
+        questionTitleLabel.text = topic?.questions[currQuestion].text;
+        topicTitleLabel.text = "\(topic?.title ?? "")"
         submitButton.isEnabled = false;
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        mathTableView.reloadData();
-        mathQuestion.text = topic?.questions[currQuestion].text;
+        questionTableView.reloadData();
+        questionTitleLabel.text = topic?.questions[currQuestion].text;
         submitButton.isEnabled = false;
     }
     

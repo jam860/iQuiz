@@ -23,10 +23,8 @@ class AnswerController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        questionLabel.text = "Question: \n\(question)"
-        print("viewDidLoad")
-        
-        correctAnswerLabel.text = "The correct answer was:  \n\(correctAnswer)"
+        questionLabel.text = "\(question)"        
+        correctAnswerLabel.text = "\(correctAnswer)"
         if answerResult == false {
             resultLabel.text = "Your answer was incorrect."
         } else if answerResult == true {
@@ -46,7 +44,6 @@ class AnswerController: UIViewController {
 
     @IBAction func nextBtn(_ sender: Any) {
         if topicFinished {
-            print("those are all the questions")
             performSegue(withIdentifier: "toResults", sender: nil)
         } else if !topicFinished {
 //            performSegue(withIdentifier: "backToMath", sender: nil)
