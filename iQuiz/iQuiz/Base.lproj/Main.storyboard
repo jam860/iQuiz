@@ -307,6 +307,9 @@
                                 <rect key="frame" x="166.66666666666666" y="749.66666666666663" width="59.666666666666657" height="34.333333333333371"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Next"/>
+                                <connections>
+                                    <segue destination="nHP-dd-kQI" kind="unwind" unwindAction="unwindToMainWithSegue:" id="5n8-Zb-g8M"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score Results" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cbr-Kb-eJo">
                                 <rect key="frame" x="120" y="342.33333333333331" width="153" height="31.333333333333314"/>
