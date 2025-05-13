@@ -9,7 +9,7 @@ import UIKit
 
 class QuestionController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    var topic : Topic?
+    var topic : Quiz?
     var currQuestion : Int = 0;
     var selectedAnswer : String = "";
     var answersCorrect : Int = 0;
@@ -39,7 +39,7 @@ class QuestionController: UIViewController, UITableViewDataSource, UITableViewDe
     
     @objc func swipeRight() {
         if submitButton.isEnabled == true {
-            let answerIndex = (topic?.questions[currQuestion].answerIndex ?? 1) - 1
+            let answerIndex = Int((topic?.questions[currQuestion].answer)!)! - 1
             let answer : String = topic?.questions[currQuestion].answers[answerIndex] ?? ""
             if selectedAnswer == answer {
                 answersCorrect += 1;
@@ -93,12 +93,12 @@ class QuestionController: UIViewController, UITableViewDataSource, UITableViewDe
     
     
     @IBAction func submitBtn(_ sender: Any?) {
-        let answerIndex = (topic?.questions[currQuestion].answerIndex ?? 1) - 1
-        let answer : String = topic?.questions[currQuestion].answers[answerIndex] ?? ""
-        if selectedAnswer == answer {
+        let answerIndex = Int((topic?.questions[currQuestion].answer)!)! - 1
+        let correctAnswer : String = topic?.questions[currQuestion].answers[answerIndex] ?? ""
+        if selectedAnswer == correctAnswer {
             answersCorrect += 1;
         }
-        performSegue(withIdentifier: "toAnswer", sender: (answerResult: selectedAnswer == answer, correctAnswer: answer, selectedAnswer: selectedAnswer, question: topic?.questions[currQuestion].text, topicFinished: currQuestion + 1 >= topic?.questions.count ?? 1, totalQuestions: topic?.questions.count, answersCorrect: answersCorrect))
+        performSegue(withIdentifier: "toAnswer", sender: (answerResult: selectedAnswer == correctAnswer, correctAnswer: correctAnswer, selectedAnswer: selectedAnswer, question: topic?.questions[currQuestion].text, topicFinished: currQuestion + 1 >= topic?.questions.count ?? 1, totalQuestions: topic?.questions.count, answersCorrect: answersCorrect))
         currQuestion += 1
     }
     

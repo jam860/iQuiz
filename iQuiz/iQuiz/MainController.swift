@@ -8,17 +8,30 @@
 
 import UIKit
 
-struct Topic {
+struct Quiz: Codable {
     let title : String
-    let description : String
-    let img : UIImage
+    let desc : String
+//    let img : UIImage
+    let img : String?
     let questions : [Question]
 }
 
-struct Question {
+struct Question: Codable {
     let text : String
-    let answerIndex : Int
+    let answer : String
     let answers : [String]
+}
+
+class Quizzes {
+    static var quizzes : [Quiz] = [
+        Quiz(title: "Mathematics", desc: "Math questions, ready to do calculus?", img: "math", questions: [Question(text: "What is 2+2?", answer: "1", answers: ["4", "22", "An irrational number", "Nobody knows"]), Question(text: "What is 4+4?", answer: "2", answers: ["42", "8", "kanji tatsumi", "ryuji sakamoto"])]),
+        Quiz(title: "Marvel Super Heroes", desc: "Your favorite superheroes!", img: "venom", questions: [Question(text: "Who is Iron Man?", answer: "1", answers: ["Tony Stark", "Obadiah Stane", "A rock hit by Megadeth", "Nobody knows"])]),
+        Quiz(title: "Science", desc: "Science questions, volcano goes boom!", img: "science", questions: [Question(text: "What is fire?", answer: "1", answers: ["One of the four classical elements", "A Magical reaction given to us by God", "A band that hasn't yet been discovered", "Fire! Fire! Fire! heh-heh"])])
+    ];
+    
+//    static func getQuizzes() -> [Quiz] {
+//        return quizzes
+//    }
 }
 
 class MainController: UIViewController {
@@ -27,12 +40,14 @@ class MainController: UIViewController {
     @IBOutlet var tableView: UITableView!
     @IBOutlet weak var setting: UIBarButtonItem!
     
-    let topics : [Topic] = [
-        Topic(title: "Mathematics", description: "Math questions, ready to do calculus?", img: UIImage(named: "math")!, questions: [Question(text: "What is 2+2?", answerIndex: 1, answers: ["4", "22", "An irrational number", "Nobody knows"]), Question(text: "What is 4+4?", answerIndex: 2, answers: ["42", "8", "kanji tatsumi", "ryuji sakamoto"])]),
-        Topic(title: "Marvel Super Heroes", description: "Your favorite superheroes!", img: UIImage(named: "venom")!, questions: [Question(text: "Who is Iron Man?", answerIndex: 1, answers: ["Tony Stark", "Obadiah Stane", "A rock hit by Megadeth", "Nobody knows"])]),
-        Topic(title: "Science", description: "Science questions, volcano goes boom!", img: UIImage(named: "science")!, questions: [Question(text: "What is fire?", answerIndex: 1, answers: ["One of the four classical elements", "A Magical reaction given to us by God", "A band that hasn't yet been discovered", "Fire! Fire! Fire! heh-heh"])])
-    ]
+//    var quizzes : [Quiz] = [
+//        Quiz(title: "Mathematics", desc: "Math questions, ready to do calculus?", img: "math", questions: [Question(text: "What is 2+2?", answer: "1", answers: ["4", "22", "An irrational number", "Nobody knows"]), Question(text: "What is 4+4?", answer: "2", answers: ["42", "8", "kanji tatsumi", "ryuji sakamoto"])]),
+//        Quiz(title: "Marvel Super Heroes", desc: "Your favorite superheroes!", img: "venom", questions: [Question(text: "Who is Iron Man?", answer: "1", answers: ["Tony Stark", "Obadiah Stane", "A rock hit by Megadeth", "Nobody knows"])]),
+//        Quiz(title: "Science", desc: "Science questions, volcano goes boom!", img: "science", questions: [Question(text: "What is fire?", answer: "1", answers: ["One of the four classical elements", "A Magical reaction given to us by God", "A band that hasn't yet been discovered", "Fire! Fire! Fire! heh-heh"])])
+//    ]
     
+    var quizzes = Quizzes.quizzes
+            
     @IBAction func settingsTap(_ sender: Any) {
         let alert = UIAlertController(title: "Settings", message: "Settings goes here", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
@@ -42,8 +57,16 @@ class MainController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        print(quizzes);
         tableView.delegate = self
         tableView.dataSource = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        quizzes = Quizzes.quizzes
+        tableView.reloadData();
+        print("reloaded")
+        print(quizzes)
     }
     
     @IBAction func unwindToMain(segue: UIStoryboardSegue) {
@@ -69,7 +92,7 @@ extension MainController : UITableViewDataSource, UITableViewDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toQuestion" {
             if let destination = segue.destination as? QuestionController,
-                let topic = sender as? Topic {
+                let topic = sender as? Quiz {
                     destination.topic = topic
                 }
             }
@@ -78,13 +101,13 @@ extension MainController : UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let cell = tableView.cellForRow(at: indexPath) {
 //            let labelText = cell.textLabel?.text ?? "No text"
-            performSegue(withIdentifier: "toQuestion", sender: topics[indexPath.row])
+            performSegue(withIdentifier: "toQuestion", sender: quizzes[indexPath.row])
         }
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return topics.count
+        return quizzes.count
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -98,13 +121,21 @@ extension MainController : UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
-        cell.textLabel?.text = topics[indexPath.row].title
+        cell.textLabel?.text = quizzes[indexPath.row].title
         cell.textLabel?.font = UIFont.systemFont(ofSize: 17, weight: .medium)
-        cell.detailTextLabel?.text = topics[indexPath.row].description
+        cell.detailTextLabel?.text = quizzes[indexPath.row].desc
         cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 14, weight: .light)
 //        let resizedImage = topics[indexPath.row].img.resize(to: CGSize(width: 80, height: 80))
-        let resizedImage = topics[indexPath.row].img.imageWith(newSize: CGSize(width: 80, height: 80))
-        cell.imageView?.image = resizedImage
+//        UIImage(named: "math")!
+        if quizzes[indexPath.row].img == nil {
+            let resizedImage = UIImage(named: quizzes[indexPath.row].title)!.imageWith(newSize: CGSize(width: 80, height: 80))
+            cell.imageView?.image = resizedImage
+
+        } else {
+            let resizedImage = UIImage(named: quizzes[indexPath.row].img!)!.imageWith(newSize: CGSize(width: 80, height: 80))
+            cell.imageView?.image = resizedImage
+        }
+       
 
 //        cell.imageView?.image = topics[indexPath.row].img
         return cell
