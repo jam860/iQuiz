@@ -128,9 +128,13 @@ extension MainController : UITableViewDataSource, UITableViewDelegate {
 //        let resizedImage = topics[indexPath.row].img.resize(to: CGSize(width: 80, height: 80))
 //        UIImage(named: "math")!
         if quizzes[indexPath.row].img == nil {
-            let resizedImage = UIImage(named: quizzes[indexPath.row].title)!.imageWith(newSize: CGSize(width: 80, height: 80))
+//            if quizzes[indexPath.row].title == "Science!", quizzes[indexPath.row].title == "Marvel Super Heroes", quizzes[indexPath.row].title == "Mathematics" {
+//                let resizedImage = UIImage(named: quizzes[indexPath.row].title)!.imageWith(newSize: CGSize(width: 80, height: 80))
+//                cell.imageView?.image = resizedImage
+//            }
+            let resizedImage = UIImage(named: "quiz")!.imageWith(newSize: CGSize(width: 80, height: 80))
             cell.imageView?.image = resizedImage
-
+            
         } else {
             let resizedImage = UIImage(named: quizzes[indexPath.row].img!)!.imageWith(newSize: CGSize(width: 80, height: 80))
             cell.imageView?.image = resizedImage

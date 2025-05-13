@@ -23,51 +23,51 @@ import UIKit
 
 class SettingsController: UIViewController {
     
+    @IBOutlet weak var urlInput: UITextField!
     var addressField = "http://tednewardsandbox.site44.com/questions.json";
     
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        let url = URL(string: "https://tednewardsandbox.site44.com/questions.json")
-            if url == nil {
-              print("Bad address")
-              return
-            }
+    @IBOutlet weak var errorMessage: UILabel!
+    @IBAction func checkNowTap(_ sender: Any) {
         
+        let url = URL(string: urlInput.text!)
+        if url == nil {
+         print("URL is Empty.")
+         print(urlInput.text!)
+         errorMessage.text = "URL is Empty."
+         return
+        }
         (URLSession.shared.dataTask(with: url!) {
             data, response, error in
-            
-            DispatchQueue.global().async {
                 if error == nil {
 //                    print(response!.description)
                     if data == nil {
                         print("no data")
+                        self.errorMessage.text = "No data found at this URL."
                     } else {
                         do {
                             print("getting data...")
-                            let newObject = try JSONSerialization.jsonObject(with: data!)
                             let quizzes = try JSONDecoder().decode([Quiz].self, from: data!)
-//                            let jsonData = try JSONSerialization.data(withJSONObject: newObject)
-//                            let newDataString = String(data: jsonData, encoding: .utf8)
                             DispatchQueue.main.async {
-                                print("this is the data")
                                 Quizzes.quizzes = quizzes;
+                                self.errorMessage.text = "Data has been set."
                             }
                         } catch {
-                            print("something happened while serializing data.. :(")
-                            print(error)
+                            self.errorMessage.text = "Something happened while trying to parse the JSON."
                         }
-                        
                     }
                 } else {
                     DispatchQueue.main.async {
-                        print(error!)
-                        print(error!.localizedDescription)
+//                        print(error!)
+//                        print(error!.localizedDescription)
+                        self.errorMessage.text = "There was a network issue."
                     }
                 }
-            }
         }).resume()
+    }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        errorMessage.text = "";
         
     }
     
