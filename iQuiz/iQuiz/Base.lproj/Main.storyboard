@@ -28,18 +28,17 @@
             <objects>
                 <viewController id="whI-Z0-SiJ" customClass="SettingsController" customModule="iQuiz" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UAg-DC-Hs7">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w1s-hO-9uk">
-                                <rect key="frame" x="165" y="59" width="63" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w1s-hO-9uk">
+                                <rect key="frame" x="102" y="99" width="189" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1rn-iP-Lcj">
-                                <rect key="frame" x="140.66666666666666" y="342.33333333333331" width="112" height="35"/>
+                                <rect key="frame" x="140.66666666666666" y="314.33333333333331" width="112" height="35"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Check Now"/>
                                 <connections>
@@ -47,27 +46,30 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="http://tednewardsandbox.site44.com/questions.json" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Q3e-ym-3kp">
-                                <rect key="frame" x="50" y="258.33333333333331" width="293" height="34"/>
+                                <rect key="frame" x="50" y="230.33333333333334" width="293" height="34.000000000000028"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Where would you like to import quizzes from?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4hF-z5-zgR">
-                                <rect key="frame" x="20" y="198" width="353" height="20.333333333333343"/>
+                                <rect key="frame" x="20" y="170" width="353" height="20.333333333333343"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="03G-59-7JK">
-                                <rect key="frame" x="21" y="52" width="61.666666666666629" height="34.333333333333485"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="03G-59-7JK">
+                                <rect key="frame" x="20" y="99" width="62" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="62" id="9NK-hi-Um9"/>
+                                    <constraint firstAttribute="height" constant="21" id="LOR-Ow-idP"/>
+                                </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Back"/>
                                 <connections>
-                                    <segue destination="lcb-Ug-w33" kind="unwind" unwindAction="unwindToMainWithSegue:" id="UmM-d0-kQY"/>
+                                    <segue destination="lcb-Ug-w33" kind="unwind" unwindAction="unwindToMainSettingsWithSegue:" id="aNr-e2-ahc"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="error message" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ly6-Ty-7xm">
-                                <rect key="frame" x="20" y="427.33333333333331" width="353" height="20.333333333333314"/>
+                                <rect key="frame" x="20" y="399.33333333333331" width="353" height="20.333333333333314"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -77,14 +79,19 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="4hF-z5-zgR" firstAttribute="leading" secondItem="L29-q3-KVh" secondAttribute="leading" constant="20" id="2vn-5W-mrx"/>
-                            <constraint firstItem="4hF-z5-zgR" firstAttribute="top" secondItem="L29-q3-KVh" secondAttribute="top" constant="80" id="6VS-Sz-qlc"/>
+                            <constraint firstItem="w1s-hO-9uk" firstAttribute="centerX" secondItem="UAg-DC-Hs7" secondAttribute="centerX" id="4fh-6W-Rai"/>
+                            <constraint firstItem="4hF-z5-zgR" firstAttribute="top" secondItem="w1s-hO-9uk" secondAttribute="bottom" constant="50" id="6VS-Sz-qlc"/>
+                            <constraint firstItem="w1s-hO-9uk" firstAttribute="leading" secondItem="03G-59-7JK" secondAttribute="trailing" constant="20" id="6tt-ev-83u"/>
+                            <constraint firstItem="03G-59-7JK" firstAttribute="top" secondItem="L29-q3-KVh" secondAttribute="top" constant="40" id="7ep-yr-NTb"/>
                             <constraint firstItem="L29-q3-KVh" firstAttribute="trailing" secondItem="4hF-z5-zgR" secondAttribute="trailing" constant="20" id="7ex-eC-X7d"/>
                             <constraint firstItem="1rn-iP-Lcj" firstAttribute="top" secondItem="Q3e-ym-3kp" secondAttribute="bottom" constant="50" id="GtS-bN-waV"/>
                             <constraint firstItem="ly6-Ty-7xm" firstAttribute="leading" secondItem="L29-q3-KVh" secondAttribute="leading" constant="20" id="OKH-Rs-jDo"/>
                             <constraint firstItem="1rn-iP-Lcj" firstAttribute="centerX" secondItem="UAg-DC-Hs7" secondAttribute="centerX" id="OTD-rI-BZi"/>
                             <constraint firstItem="ly6-Ty-7xm" firstAttribute="centerX" secondItem="UAg-DC-Hs7" secondAttribute="centerX" id="VJ5-E0-Fhc"/>
+                            <constraint firstItem="w1s-hO-9uk" firstAttribute="top" secondItem="L29-q3-KVh" secondAttribute="top" constant="40" id="dKS-Ob-mfY"/>
                             <constraint firstItem="L29-q3-KVh" firstAttribute="trailing" secondItem="ly6-Ty-7xm" secondAttribute="trailing" constant="20" id="iwk-Wi-mcl"/>
                             <constraint firstItem="ly6-Ty-7xm" firstAttribute="top" secondItem="1rn-iP-Lcj" secondAttribute="bottom" constant="50" id="oAI-QH-upP"/>
+                            <constraint firstItem="03G-59-7JK" firstAttribute="leading" secondItem="L29-q3-KVh" secondAttribute="leading" constant="20" id="sMb-Ky-bWY"/>
                             <constraint firstItem="Q3e-ym-3kp" firstAttribute="top" secondItem="4hF-z5-zgR" secondAttribute="bottom" constant="40" id="txo-cB-WQV"/>
                             <constraint firstItem="L29-q3-KVh" firstAttribute="trailing" secondItem="Q3e-ym-3kp" secondAttribute="trailing" constant="50" id="wM5-Y6-dsD"/>
                             <constraint firstItem="Q3e-ym-3kp" firstAttribute="leading" secondItem="L29-q3-KVh" secondAttribute="leading" constant="50" id="xUf-oB-7UO"/>
@@ -145,7 +152,9 @@
                                     <barButtonItem title="Settings" image="gear" catalog="system" id="pDU-1s-5qD">
                                         <connections>
                                             <action selector="settingsTap:" destination="BYZ-38-t0r" id="Ejr-V9-wP5"/>
-                                            <segue destination="whI-Z0-SiJ" kind="show" id="7u0-lw-Ojz"/>
+                                            <segue destination="whI-Z0-SiJ" kind="popoverPresentation" identifier="toSettings" popoverAnchorBarButtonItem="pDU-1s-5qD" id="7u0-lw-Ojz">
+                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                            </segue>
                                         </connections>
                                     </barButtonItem>
                                 </items>

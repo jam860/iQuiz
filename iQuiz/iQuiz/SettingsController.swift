@@ -21,16 +21,22 @@ import UIKit
 //    let answers : [String]
 //}
 
+protocol PopoverDelegate: AnyObject {
+    func checkNowPress()
+}
+
 class SettingsController: UIViewController {
     
     @IBOutlet weak var urlInput: UITextField!
     @IBOutlet weak var errorMessage: UILabel!
+    weak var delegate: PopoverDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         errorMessage.text = "";
         
     }
+    
     
     @IBAction func checkNowTap(_ sender: Any) {
         let url = URL(string: urlInput.text!)
@@ -52,6 +58,7 @@ class SettingsController: UIViewController {
                             let quizzes = try JSONDecoder().decode([Quiz].self, from: data!)
                             DispatchQueue.main.async {
                                 Quizzes.quizzes = quizzes;
+                                self.delegate?.checkNowPress()
                                 self.errorMessage.text = "Data has been set."
                             }
                         } catch {

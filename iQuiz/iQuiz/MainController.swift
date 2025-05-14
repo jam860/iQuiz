@@ -28,23 +28,13 @@ class Quizzes {
         Quiz(title: "Marvel Super Heroes", desc: "Your favorite superheroes!", img: "venom", questions: [Question(text: "Who is Iron Man?", answer: "1", answers: ["Tony Stark", "Obadiah Stane", "A rock hit by Megadeth", "Nobody knows"])]),
         Quiz(title: "Science", desc: "Science questions, volcano goes boom!", img: "science", questions: [Question(text: "What is fire?", answer: "1", answers: ["One of the four classical elements", "A Magical reaction given to us by God", "A band that hasn't yet been discovered", "Fire! Fire! Fire! heh-heh"])])
     ];
-    
-//    static func getQuizzes() -> [Quiz] {
-//        return quizzes
-//    }
 }
 
-class MainController: UIViewController {
+class MainController: UIViewController, PopoverDelegate {
     
 
     @IBOutlet var tableView: UITableView!
     @IBOutlet weak var setting: UIBarButtonItem!
-    
-//    var quizzes : [Quiz] = [
-//        Quiz(title: "Mathematics", desc: "Math questions, ready to do calculus?", img: "math", questions: [Question(text: "What is 2+2?", answer: "1", answers: ["4", "22", "An irrational number", "Nobody knows"]), Question(text: "What is 4+4?", answer: "2", answers: ["42", "8", "kanji tatsumi", "ryuji sakamoto"])]),
-//        Quiz(title: "Marvel Super Heroes", desc: "Your favorite superheroes!", img: "venom", questions: [Question(text: "Who is Iron Man?", answer: "1", answers: ["Tony Stark", "Obadiah Stane", "A rock hit by Megadeth", "Nobody knows"])]),
-//        Quiz(title: "Science", desc: "Science questions, volcano goes boom!", img: "science", questions: [Question(text: "What is fire?", answer: "1", answers: ["One of the four classical elements", "A Magical reaction given to us by God", "A band that hasn't yet been discovered", "Fire! Fire! Fire! heh-heh"])])
-//    ]
     
     var quizzes = Quizzes.quizzes
             
@@ -62,14 +52,28 @@ class MainController: UIViewController {
         tableView.dataSource = self
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+//    override func viewWillAppear(_ animated: Bool) {
+//        quizzes = Quizzes.quizzes
+//        tableView.reloadData();
+//        print("reloaded")
+//    }
+    
+    func checkNowPress() {
         quizzes = Quizzes.quizzes
-        tableView.reloadData();
-        print("reloaded")
+        tableView.reloadData()
+        print("reloaded from delegate function")
     }
     
     @IBAction func unwindToMain(segue: UIStoryboardSegue) {
         //unwinds
+    }
+    
+    @IBAction func unwindToMainSettings(segue: UIStoryboardSegue) {
+        //unwinds
+//        quizzes = Quizzes.quizzes;
+//        tableView.reloadData();
+//        print(quizzes);
+//        print("reloaded, but from settings too");
     }
 
 }
@@ -94,7 +98,13 @@ extension MainController : UITableViewDataSource, UITableViewDelegate {
                 let topic = sender as? Quiz {
                     destination.topic = topic
                 }
+        }
+        
+        if segue.identifier == "toSettings" {
+            if let destination = segue.destination as? SettingsController {
+                destination.delegate = self
             }
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -128,7 +138,6 @@ extension MainController : UITableViewDataSource, UITableViewDelegate {
         //        UIImage(named: "math")!
         if quizzes[indexPath.row].img == nil {
             if quizzes[indexPath.row].title == "Science!" || quizzes[indexPath.row].title == "Marvel Super Heroes" || quizzes[indexPath.row].title == "Mathematics" {
-                print(quizzes[indexPath.row].title)
                 let resizedImage = UIImage(named: quizzes[indexPath.row].title)!.imageWith(newSize: CGSize(width: 80, height: 80))
                 cell.imageView?.image = resizedImage
             } else {
