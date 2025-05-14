@@ -24,16 +24,18 @@ import UIKit
 class SettingsController: UIViewController {
     
     @IBOutlet weak var urlInput: UITextField!
-    var addressField = "http://tednewardsandbox.site44.com/questions.json";
-    
-    
     @IBOutlet weak var errorMessage: UILabel!
-    @IBAction func checkNowTap(_ sender: Any) {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        errorMessage.text = "";
         
+    }
+    
+    @IBAction func checkNowTap(_ sender: Any) {
         let url = URL(string: urlInput.text!)
         if url == nil {
          print("URL is Empty.")
-         print(urlInput.text!)
          errorMessage.text = "URL is Empty."
          return
         }
@@ -67,11 +69,6 @@ class SettingsController: UIViewController {
                     }
                 }
         }).resume()
-    }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        errorMessage.text = "";
-        
     }
     
 

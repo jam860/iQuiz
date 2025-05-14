@@ -57,7 +57,6 @@ class MainController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        print(quizzes);
         tableView.delegate = self
         tableView.dataSource = self
     }
@@ -66,7 +65,6 @@ class MainController: UIViewController {
         quizzes = Quizzes.quizzes
         tableView.reloadData();
         print("reloaded")
-        print(quizzes)
     }
     
     @IBAction func unwindToMain(segue: UIStoryboardSegue) {
