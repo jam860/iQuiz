@@ -56,6 +56,7 @@ class MainController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        URLCache.shared.removeAllCachedResponses() //so, jsons can get cached sometimes, will need to test notification
         // Do any additional setup after loading the view.
         tableView.delegate = self
         tableView.dataSource = self
@@ -123,23 +124,21 @@ extension MainController : UITableViewDataSource, UITableViewDelegate {
         cell.textLabel?.font = UIFont.systemFont(ofSize: 17, weight: .medium)
         cell.detailTextLabel?.text = quizzes[indexPath.row].desc
         cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 14, weight: .light)
-//        let resizedImage = topics[indexPath.row].img.resize(to: CGSize(width: 80, height: 80))
-//        UIImage(named: "math")!
+        //        let resizedImage = topics[indexPath.row].img.resize(to: CGSize(width: 80, height: 80))
+        //        UIImage(named: "math")!
         if quizzes[indexPath.row].img == nil {
-//            if quizzes[indexPath.row].title == "Science!", quizzes[indexPath.row].title == "Marvel Super Heroes", quizzes[indexPath.row].title == "Mathematics" {
-//                let resizedImage = UIImage(named: quizzes[indexPath.row].title)!.imageWith(newSize: CGSize(width: 80, height: 80))
-//                cell.imageView?.image = resizedImage
-//            }
-            let resizedImage = UIImage(named: "quiz")!.imageWith(newSize: CGSize(width: 80, height: 80))
-            cell.imageView?.image = resizedImage
-            
+            if quizzes[indexPath.row].title == "Science!" || quizzes[indexPath.row].title == "Marvel Super Heroes" || quizzes[indexPath.row].title == "Mathematics" {
+                print(quizzes[indexPath.row].title)
+                let resizedImage = UIImage(named: quizzes[indexPath.row].title)!.imageWith(newSize: CGSize(width: 80, height: 80))
+                cell.imageView?.image = resizedImage
+            } else {
+                let resizedImage = UIImage(named: "quiz")!.imageWith(newSize: CGSize(width: 80, height: 80))
+                cell.imageView?.image = resizedImage
+            }
         } else {
             let resizedImage = UIImage(named: quizzes[indexPath.row].img!)!.imageWith(newSize: CGSize(width: 80, height: 80))
             cell.imageView?.image = resizedImage
         }
-       
-
-//        cell.imageView?.image = topics[indexPath.row].img
         return cell
     }
     
