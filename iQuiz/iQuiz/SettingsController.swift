@@ -60,7 +60,10 @@ class SettingsController: UIViewController {
                     DispatchQueue.main.async {
 //                        print(error!)
 //                        print(error!.localizedDescription)
-                        self.errorMessage.text = "There was a network issue."
+                        let alert = UIAlertController(title: "Error", message: "There was a network issue. Please try again.", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                        self.present(alert, animated: true, completion: nil)
+                        self.errorMessage.text = "There was a network issue. Please try again."
                     }
                 }
         }).resume()
