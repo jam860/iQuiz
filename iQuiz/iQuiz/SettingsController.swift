@@ -23,6 +23,7 @@ import UIKit
 
 protocol PopoverDelegate: AnyObject {
     func checkNowPress()
+    func alertInvalid()
 }
 
 class SettingsController: UIViewController {
@@ -42,7 +43,12 @@ class SettingsController: UIViewController {
         let url = URL(string: urlInput.text!)
         if url == nil {
          print("URL is Empty.")
-         errorMessage.text = "URL is Empty."
+            errorMessage.text = "Invalid URL. Please try again."
+            self.dismiss(animated: true, completion: self.delegate?.alertInvalid)
+//            
+//            let alert = UIAlertController(title: "Error", message: "Invalid URL. Please try again.", preferredStyle: .alert)
+//            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+//            self.present(alert, animated: true, completion: nil)
          return
         }
         (URLSession.shared.dataTask(with: url!) {
@@ -52,6 +58,7 @@ class SettingsController: UIViewController {
                     if data == nil {
                         print("no data")
                         self.errorMessage.text = "No data found at this URL."
+                        self.dismiss(animated: true, completion: nil)
                     } else {
                         do {
                             print("getting data...")
@@ -60,6 +67,7 @@ class SettingsController: UIViewController {
                                 Quizzes.quizzes = quizzes;
                                 self.delegate?.checkNowPress()
                                 self.errorMessage.text = "Data has been set."
+                                self.dismiss(animated: true, completion: nil)
                             }
                         } catch {
                             self.errorMessage.text = "Something happened while trying to parse the JSON."
@@ -69,6 +77,7 @@ class SettingsController: UIViewController {
                     DispatchQueue.main.async {
 //                        print(error!)
 //                        print(error!.localizedDescription)
+                        self.dismiss(animated: true, completion: nil)
                         let alert = UIAlertController(title: "Error", message: "There was a network issue. Please try again.", preferredStyle: .alert)
                         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                         self.present(alert, animated: true, completion: nil)

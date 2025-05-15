@@ -36,7 +36,7 @@ class MainController: UIViewController, PopoverDelegate {
     @IBOutlet var tableView: UITableView!
     @IBOutlet weak var setting: UIBarButtonItem!
     
-    var quizzes = Quizzes.quizzes
+    var quizzes : [Quiz] = [];
             
     @IBAction func settingsTap(_ sender: Any) {
         let alert = UIAlertController(title: "Settings", message: "Settings goes here", preferredStyle: .alert)
@@ -48,6 +48,30 @@ class MainController: UIViewController, PopoverDelegate {
         super.viewDidLoad()
 //        URLCache.shared.removeAllCachedResponses() //so, jsons can get cached sometimes, will need to test notification
         // Do any additional setup after loading the view.
+        let quizURL = "http://tednewardsandbox.site44.com/questions.json"
+        let url = URL(string: quizURL)
+        (URLSession.shared.dataTask(with: url!) {
+            data, response, error in
+                if error == nil {
+                    if data == nil {
+                        print("no data from initial start")
+                    } else {
+                        do {
+                            print("getting data...")
+                            let quizzes = try JSONDecoder().decode([Quiz].self, from: data!)
+                            DispatchQueue.main.async {
+                                Quizzes.quizzes = quizzes;
+                                self.checkNowPress()
+                            }
+                        } catch {
+                        }
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        print("network error...")
+                    }
+                }
+        }).resume()
         tableView.delegate = self
         tableView.dataSource = self
     }
@@ -62,6 +86,12 @@ class MainController: UIViewController, PopoverDelegate {
         quizzes = Quizzes.quizzes
         tableView.reloadData()
         print("reloaded from delegate function")
+    }
+    
+    func alertInvalid() {
+        let alert = UIAlertController(title: "Error", message: "Invalid URL. Please try again.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
     
     @IBAction func unwindToMain(segue: UIStoryboardSegue) {
