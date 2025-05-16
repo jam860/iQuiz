@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		1AF16D5C2DD6FA7400CC0E76 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1AF16D5B2DD6FA7400CC0E76 /* Settings.bundle */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		1AF16BCE2DC7FBAC00CC0E76 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,6 +31,7 @@
 		1AF16BB42DC7FBAA00CC0E76 /* iQuiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iQuiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AF16BCD2DC7FBAC00CC0E76 /* iQuizTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iQuizTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AF16BD72DC7FBAC00CC0E76 /* iQuizUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iQuizUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1AF16D5B2DD6FA7400CC0E76 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -88,6 +93,7 @@
 		1AF16BAB2DC7FBAA00CC0E76 = {
 			isa = PBXGroup;
 			children = (
+				1AF16D5B2DD6FA7400CC0E76 /* Settings.bundle */,
 				1AF16BB62DC7FBAA00CC0E76 /* iQuiz */,
 				1AF16BD02DC7FBAC00CC0E76 /* iQuizTests */,
 				1AF16BDA2DC7FBAC00CC0E76 /* iQuizUITests */,
@@ -225,6 +231,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1AF16D5C2DD6FA7400CC0E76 /* Settings.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

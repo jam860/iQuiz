@@ -39,37 +39,71 @@ class MainController: UIViewController, PopoverDelegate {
     var quizzes : [Quiz] = [];
             
     @IBAction func settingsTap(_ sender: Any) {
-        let alert = UIAlertController(title: "Settings", message: "Settings goes here", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
+        if let settingsUrl = URL(string: UIApplication.openSettingsURLString) {
+            UIApplication.shared.open(settingsUrl)
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        URLCache.shared.removeAllCachedResponses() //so, jsons can get cached sometimes, will need to test notification
+        URLCache.shared.removeAllCachedResponses() //so, jsons can get cached sometimes, will need to test notification
         // Do any additional setup after loading the view.
-        let quizURL = "http://tednewardsandbox.site44.com/questions.json"
-        let url = URL(string: quizURL)
+//        let quizURL = "http://tednewardsandbox.site44.com/questions.json"
+        var url : URL?
+
+        if let settingsURL : String = UserDefaults.standard.string(forKey: "quizURL") {
+            url = URL(string: settingsURL)
+            print("taken from settings")
+
+            if settingsURL == "" {
+//                print("this was the URL before: \(url) yippe")
+                url = URL(string: " ")
+//                print("this was the URL after: \(url) yippe")
+            }
+        }
+        
         (URLSession.shared.dataTask(with: url!) {
             data, response, error in
                 if error == nil {
                     if data == nil {
-                        print("no data from initial start")
+                        print("no data here")
                     } else {
                         do {
                             print("getting data...")
-                            print(data!);
+                            let url = self.getDocumentsDirectory().appendingPathComponent("quizzes.json")
+                            try data!.write(to: url)
                             let quizzes = try JSONDecoder().decode([Quiz].self, from: data!)
                             DispatchQueue.main.async {
                                 Quizzes.quizzes = quizzes;
                                 self.checkNowPress()
                             }
                         } catch {
+                            print("something happened while decoding or saving data...")
                         }
                     }
                 } else {
-                    DispatchQueue.main.async {
-                        print("network error...")
+                    print("trying from local storage...")
+                    let url = self.getDocumentsDirectory().appendingPathComponent("quizzes.json")
+                    if FileManager.default.fileExists(atPath: url.path) {
+                        do {
+                            let data = try Data(contentsOf: url)
+                            Quizzes.quizzes = try JSONDecoder().decode([Quiz].self, from: data)
+                            DispatchQueue.main.async {
+                                let alert = UIAlertController(title: "Error", message: "You are currently offline or your URL was invalid. Attempting to load quiz from local storage...", preferredStyle: .alert)
+                                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                                self.present(alert, animated: true, completion: nil)
+                                self.checkNowPress()
+                            }
+                        } catch {
+                            print("something happened while decoding the data from local storage")
+                        }
+                    } else {
+                        DispatchQueue.main.async {
+                            let alert = UIAlertController(title: "Error", message: "You need to connect to the internet first before running the app to save any initial data.", preferredStyle: .alert)
+                            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                            self.present(alert, animated: true, completion: nil)
+                            print("You need to connect to the internet before running the app to save initial data.")
+                        }
                     }
                 }
         }).resume()
@@ -78,7 +112,7 @@ class MainController: UIViewController, PopoverDelegate {
     }
     
 //    override func viewWillAppear(_ animated: Bool) {
-//        quizzes = Quizzes.quizzes
+//        
 //        tableView.reloadData();
 //        print("reloaded")
 //    }
@@ -93,6 +127,10 @@ class MainController: UIViewController, PopoverDelegate {
         let alert = UIAlertController(title: "Error", message: "Invalid URL. Please try again.", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    func getDocumentsDirectory() -> URL {
+        return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
     }
     
     @IBAction func unwindToMain(segue: UIStoryboardSegue) {
