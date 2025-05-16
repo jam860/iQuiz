@@ -4,7 +4,7 @@
 //
 //  Created by James Nguyen on 5/4/25.
 //
-// network branch
+// storage branch
 
 import UIKit
 
@@ -58,6 +58,7 @@ class MainController: UIViewController, PopoverDelegate {
                     } else {
                         do {
                             print("getting data...")
+                            print(data!);
                             let quizzes = try JSONDecoder().decode([Quiz].self, from: data!)
                             DispatchQueue.main.async {
                                 Quizzes.quizzes = quizzes;
